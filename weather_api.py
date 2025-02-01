@@ -10,7 +10,7 @@ def fetch_weather_data(latitude, longitude, start_date, end_date):
         "longitude": longitude,
         "start_date": start_date,
         "end_date": end_date,
-        "hourly": ["temperature_2m", "relative_humidity_2m", "dew_point_2m", "precipitation", "wind_speed_10m", "wind_speed_100m", "soil_temperature_0_to_7cm", "soil_temperature_7_to_28cm"]
+        "hourly": ["temperature_2m", "relative_humidity_2m", "dew_point_2m", "precipitation", "wind_speed_10m", "wind_speed_100m", "soil_temperature_0_to_7cm", "soil_temperature_7_to_28cm","cloud_cover", "cloud_cover_low", "cloud_cover_mid", "cloud_cover_high", "shortwave_radiation", "direct_radiation", "diffuse_radiation", "direct_normal_irradiance", "global_tilted_irradiance", "terrestrial_radiation"]
     }
     
     response = requests.get(url, params=params)
@@ -26,4 +26,4 @@ def fetch_weather_data(latitude, longitude, start_date, end_date):
 
 # Example usage
 df = fetch_weather_data(52.52, 13.41, "2025-01-16", "2025-01-22")
-print(df)
+print(df.iloc[-20:,9:14])  # Print the first 5 rows of the DataFrame
